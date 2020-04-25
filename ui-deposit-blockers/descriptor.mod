@@ -4,4 +4,4 @@ tags={
     "Galaxy Generation"
     "Technologies"
 }
-supported_version="2.5.*"
+supported_version="2.6.*"
