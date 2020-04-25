@@ -1,5 +1,3 @@
-# ! ! ! IMPORTANT ! ! ! Keep the costs and weights up-to-date with the vanilla values, and also update the other submods ! ! !
-
 @tier1cost2 = 750
 @tier2cost2 = 2000
 
