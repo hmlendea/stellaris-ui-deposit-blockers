@@ -1,3 +1,5 @@
+[![Latest GitHub release](https://img.shields.io/github/v/release/hmlendea/stellaris-ui-deposit-blockers)](https://github.com/hmlendea/stellaris-ui-deposit-blockers/releases/latest)
+
 # About
 
 Mod that adds a few more deposit blockers and their respective technologis, purely to increase variety.
