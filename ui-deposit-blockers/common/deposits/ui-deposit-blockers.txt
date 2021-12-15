@@ -10,7 +10,7 @@ d_ui_ashland_blocker = {
     is_for_colonizable = yes
     category = deposit_cat_blockers
 
-    resource = {
+    resources = {
         category = deposit_blockers
         cost = {
             energy = 500
