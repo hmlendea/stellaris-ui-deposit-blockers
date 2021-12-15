@@ -12,6 +12,15 @@ It is actively tested (and developed) on **Linux**, where it is guaranteed to wo
 
 It should also be compatible with any other mods.
 
+# Installation
+
+[![Get it from the Workshop](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/steam-workshop.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=2073660612) [![Get it from Paradox Mods](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/paradox-mods.png)](https://mods.paradoxplaza.com/mods/34638/Any) [![Get it from the Nexus](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nexus.png)](https://www.nexusmods.com/stellaris/mods/91) [![Get it from GitHub](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/github.png)](https://github.com/hmlendea/stellaris-ui-deposit-blockers/releases)
+
+## Manual installation
+
+ - Download the [latest release](https://github.com/hmlendea/stellaris-ui-deposit-blockers/releases)
+ - Extract the contents into your game's mod directory
+
 # Contributions
 
 You are welcome to bring any suggestion, feedback or modification to this project.
