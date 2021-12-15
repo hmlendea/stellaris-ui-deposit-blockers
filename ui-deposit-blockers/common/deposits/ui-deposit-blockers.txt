@@ -7,7 +7,7 @@
 d_ui_ashland_blocker = {
     time = 300
 
-    is_for_colonizeable = yes
+    is_for_colonizable = yes
     category = deposit_cat_blockers
 
     resource = {
@@ -57,7 +57,7 @@ d_ui_ashland_blocker = {
 d_ui_canyon_blocker = {
     time = 300
 
-    is_for_colonizeable = yes
+    is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
@@ -105,7 +105,7 @@ d_ui_canyon_blocker = {
 d_ui_floodplain_blocker = {
     time = 175
 
-    is_for_colonizeable = yes
+    is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
@@ -149,7 +149,7 @@ d_ui_floodplain_blocker = {
 d_ui_giant_earthworms_blocker = {
     time = 100
 
-    is_for_colonizeable = yes
+    is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
@@ -209,7 +209,7 @@ d_ui_giant_earthworms_blocker = {
 d_ui_lava_lake_blocker = {
     time = 175
 
-    is_for_colonizeable = yes
+    is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
@@ -257,7 +257,7 @@ d_ui_lava_lake_blocker = {
 d_ui_sea_monsters_blocker = {
     time = 100
 
-    is_for_colonizeable = yes
+    is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
@@ -321,7 +321,7 @@ d_ui_sea_monsters_blocker = {
 d_ui_tarland_blocker = {
     time = 100
 
-    is_for_colonizeable = yes
+    is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
