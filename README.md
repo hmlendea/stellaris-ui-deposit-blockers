@@ -36,6 +36,8 @@ Here are a few ways in which you can do so:
  - Raising a new [issue](https://github.com/hmlendea/stellaris-ui-deposit-blockers/issues) for this project
  - Creating a git pull request _(This requires git knowledge)_
 
+See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
+
 # Universul Unfinitum Collection
 
  - [Character Traits](https://github.com/hmlendea/stellaris-ui-character-traits)
