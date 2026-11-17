@@ -180,13 +180,14 @@ diff ui-deposit-blockers.mod ui-deposit-blockers/descriptor.mod
 2. Run the cross-checks above against the exact content being published.
 3. Raise `supported_version` in both descriptors when targeting a new game-version family, and keep the two files identical.
 4. Tag the release in Git and attach the packaged `ui-deposit-blockers_<version>.zip` archive to the GitHub release.
-5. Let `.github/workflows/nexus-mods-release.yml` publish the tag to Nexus Mods, and upload the same content set manually to Steam Workshop, Paradox Mods, and GitHub Releases, because each channel stores an independent copy and can drift.
+5. Let `.github/workflows/nexus-mods-release.yml` and `.github/workflows/steam-workshop-release.yml` publish the tag to Nexus Mods and Steam Workshop, and upload the same content set manually to Paradox Mods and GitHub Releases, because each channel stores an independent copy and can drift.
 
 ## ⚙️ GitHub Actions
 
 | Workflow | Purpose | What it does |
 |----------|---------|--------------|
 | [ Nexus Mods ](https://github.com/hmlendea/stellaris-ui-deposit-blockers/blob/master/.github/workflows/nexus-mods-release.yml) | Publish releases to Nexus Mods | Runs on a `v*.*.*` tag push or a manual dispatch with a `tag` input, downloads the release archive `ui-deposit-blockers_<version>.zip` from the matching GitHub release, and uploads it with the `Nexus-Mods/upload-action` action |
+| [ Steam Workshop ](https://github.com/hmlendea/stellaris-ui-deposit-blockers/blob/master/.github/workflows/steam-workshop-release.yml) | Publish releases to Steam Workshop | Runs on a `v*.*.*` tag push, downloads and unzips the release archive `ui-deposit-blockers_<version>.zip` from the matching GitHub release, and uploads it to Workshop item `2073660612` with the `hmlendea/steam-workshop-update` action |
 
 ## 🗂️ Project Structure
 
@@ -196,7 +197,8 @@ diff ui-deposit-blockers.mod ui-deposit-blockers/descriptor.mod
 │   ├── FUNDING.yml
 │   ├── ui_cover.png
 │   └── workflows/
-│       └── nexus-mods-release.yml
+│       ├── nexus-mods-release.yml
+│       └── steam-workshop-release.yml
 ├── docs/                       # Documentation knowledge base
 ├── ui-deposit-blockers.mod     # Root mod descriptor
 └── ui-deposit-blockers/        # Mod payload
@@ -215,7 +217,7 @@ diff ui-deposit-blockers.mod ui-deposit-blockers/descriptor.mod
 | `ui-deposit-blockers/gfx/interface/icons/` | Blocker and technology icons, resolved by file name |
 | `ui-deposit-blockers/localisation/english/` | English strings keyed by definition identifier |
 | `docs/` | Documentation knowledge base; not shipped to players |
-| `.github/` | Funding declaration, repository cover image, and the Nexus Mods publication workflow |
+| `.github/` | Funding declaration, repository cover image, and the Nexus Mods and Steam Workshop publication workflows |
 
 ## 🏗️ Architecture
 

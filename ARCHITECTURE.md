@@ -365,7 +365,7 @@ The deployment unit is the packaged mod directory `mod/ui-deposit-blockers` toge
 | Process topology | No mod-owned process; everything runs inside the game client | No startup, shutdown, health, or scaling responsibility belongs to the mod |
 | Persistent state | None owned by the mod; the engine persists blocker state in the save game | Removing or renaming a blocker mid-campaign can leave saved references the engine must resolve |
 | Distribution | Steam Workshop, Paradox Mods, Nexus Mods, and GitHub Releases | Each channel receives a packaged snapshot; outdated snapshots deliver outdated definitions |
-| Publication automation | `.github/workflows/nexus-mods-release.yml` uploads the tagged GitHub release archive to Nexus Mods | Nexus Mods tracks tags automatically; the other three channels still depend on manual uploads |
+| Publication automation | `.github/workflows/nexus-mods-release.yml` and `.github/workflows/steam-workshop-release.yml` upload the tagged GitHub release archive to Nexus Mods and Steam Workshop | Nexus Mods and Steam Workshop track tags automatically; Paradox Mods and GitHub Releases still depend on manual uploads |
 | Version gate | `supported_version="v4.5.*"` in both descriptors | A game update outside that range prevents loading until the version is raised |
 | Installation | Extract the release contents into the game's mod directory, or subscribe through a store | Manual installs can drift from the published release |
 | Availability | Single-player and multiplayer mod-dependent sessions | Clients with mismatched versions fail the multiplayer checksum comparison |
@@ -386,7 +386,7 @@ The deployment unit is the packaged mod directory `mod/ui-deposit-blockers` toge
 
 ## ✅ Testing and Verification
 
-The repository contains no automated test suite, test project, lint configuration, or validation workflow; the only workflow publishes tagged releases to Nexus Mods. Verification is achieved through identifier cross-checks and in-game observation. The engine is the only authority on whether the scripts parse and behave as intended, so the checks below concentrate on the coupling rules that the engine cannot report clearly.
+The repository contains no automated test suite, test project, lint configuration, or validation workflow; the two workflows publish tagged releases to Nexus Mods and Steam Workshop. Verification is achieved through identifier cross-checks and in-game observation. The engine is the only authority on whether the scripts parse and behave as intended, so the checks below concentrate on the coupling rules that the engine cannot report clearly.
 
 Execute the principal automated verification with:
 
@@ -419,7 +419,7 @@ Material coverage gaps:
 ## ⚠️ Design Constraints
 
 - **Engine-owned execution:** All behaviour is the engine's; the mod can only declare parameters. Any behaviour the script API does not expose cannot be implemented here.
-- **No build or test toolchain:** There is no compilation, linting, or packaging command in the repository, so contributor verification relies on cross-check commands and in-game observation. The sole workflow, `.github/workflows/nexus-mods-release.yml`, only publishes a tagged release to Nexus Mods.
+- **No build or test toolchain:** There is no compilation, linting, or packaging command in the repository, so contributor verification relies on cross-check commands and in-game observation. The workflows, `.github/workflows/nexus-mods-release.yml` and `.github/workflows/steam-workshop-release.yml`, only publish a tagged release to Nexus Mods and Steam Workshop.
 - **Deliberate descriptor duplication:** The metadata exists twice and must be edited twice; the duplication is a distribution requirement rather than an oversight.
 - **Five-way identifier coupling:** Deposit identifier, technology identifier, two localisation keys, and two icon names must agree; the engine reports mismatches only indirectly.
 - **Scripted clearing time is fixed per blocker:** Clearing time is a static value (180 or 270) with no modifier hooks in the current definitions.

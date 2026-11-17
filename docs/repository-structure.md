@@ -8,7 +8,8 @@
 │   ├── FUNDING.yml                 # Donation declaration (custom + patron/ko_fi/liberapay)
 │   ├── ui_cover.png                # 1280x640 store cover image
 │   └── workflows/
-│       └── nexus-mods-release.yml  # Publishes tagged releases to Nexus Mods
+│       ├── nexus-mods-release.yml       # Publishes tagged releases to Nexus Mods
+│       └── steam-workshop-release.yml   # Publishes tagged releases to Steam Workshop
 ├── .gitignore                      # Ignores *.zip (packaged release archives)
 ├── ARCHITECTURE.md                 # Root architecture document
 ├── CODE_OF_CONDUCT.md              # Conduct standards
@@ -42,7 +43,7 @@
 
 | Directory | Responsibility | Notes |
 |-----------|----------------|-------|
-| `.github/` | Repository hosting metadata | Holds the funding declaration, the store cover image, and the Nexus Mods publication workflow |
+| `.github/` | Repository hosting metadata | Holds the funding declaration, the store cover image, and the Nexus Mods and Steam Workshop publication workflows |
 | `docs/` | This knowledge base | Not shipped to players; engine ignores it |
 | `ui-deposit-blockers/` | The complete mod payload | The only directory a distribution package must include, alongside the root `.mod` file |
 | `common/deposits/` | Deposit (blocker) definitions | Engine merges every file in this directory across all active mods |

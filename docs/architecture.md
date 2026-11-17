@@ -9,7 +9,7 @@ The mod is a **declarative data-driven plug-in**. The applicable profile from a 
 | Dimension | Value | Evidence |
 |-----------|-------|----------|
 | Executable code | None | Only `.txt`, `.yml`, `.mod`, `.dds`, `.png` files |
-| Build step | None | No build files and no scripts; the sole workflow (`.github/workflows/nexus-mods-release.yml`) publishes without compiling |
+| Build step | None | No build files and no scripts; the workflows (`.github/workflows/nexus-mods-release.yml`, `.github/workflows/steam-workshop-release.yml`) publish without compiling |
 | Runtime entry point | None owned by the mod | The launcher and engine own loading |
 | State ownership | None | No persistence code; save game holds blocker state |
 | Extension mechanism | Engine file-format conventions | Fixed directory names under `common/`, `gfx/`, `localisation/` |
