@@ -54,7 +54,7 @@ The repository is a **mod**, not an application. It contains no executable code,
 
 ## Relationship to other Universum Infinitum mods
 
-The `README.md` lists ten sibling repositories in the same collection. This mod is standalone: no sibling mod is a declared dependency, and no shared script file is consumed at runtime. The only cross-repository coupling is the shared visual identity in the store listings and the three additional distribution channels.
+The `README.md` lists nine sibling repositories in the same collection. This mod is standalone: no sibling mod is a declared dependency, and no shared script file is consumed at runtime. The only cross-repository coupling is the shared visual identity in the store listings and the three additional distribution channels.
 
 ## Where to go next
 
