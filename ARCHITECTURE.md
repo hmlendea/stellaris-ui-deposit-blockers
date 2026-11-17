@@ -72,7 +72,7 @@ There is no network, filesystem-write, or untrusted-input boundary inside the mo
 
 ## 🏗️ Architectural Style
 
-**Declarative data-driven mod (plugin profile).** The repository contains no executable code, no build step, and no runtime entry point. Every file is either a mod descriptor, a script definition parsed by the game engine, a localisation table, or a texture; the single GitHub Actions workflow only republishes a tagged release and executes no mod code. The engine is the sole executor, scheduler, and persistence owner; the mod supplies parameters and assets.
+**Declarative data-driven mod (plugin profile).** The repository contains no executable code, no build step, and no runtime entry point. Every file is either a mod descriptor, a script definition parsed by the game engine, a localisation table, or a texture; the GitHub Actions workflows only package the tagged content and republish it, and they execute no mod code. The engine is the sole executor, scheduler, and persistence owner; the mod supplies parameters and assets.
 
 ```mermaid
 flowchart TB
@@ -365,7 +365,7 @@ The deployment unit is the packaged mod directory `mod/ui-deposit-blockers` toge
 | Process topology | No mod-owned process; everything runs inside the game client | No startup, shutdown, health, or scaling responsibility belongs to the mod |
 | Persistent state | None owned by the mod; the engine persists blocker state in the save game | Removing or renaming a blocker mid-campaign can leave saved references the engine must resolve |
 | Distribution | Steam Workshop, Paradox Mods, Nexus Mods, and GitHub Releases | Each channel receives a packaged snapshot; outdated snapshots deliver outdated definitions |
-| Publication automation | `.github/workflows/nexus-mods-release.yml` and `.github/workflows/steam-workshop-release.yml` upload the tagged GitHub release archive to Nexus Mods and Steam Workshop | Nexus Mods and Steam Workshop track tags automatically; Paradox Mods and GitHub Releases still depend on manual uploads |
+| Publication automation | `.github/workflows/github-release.yml` builds and attaches the release archive, while `.github/workflows/nexus-mods-release.yml` and `.github/workflows/steam-workshop-release.yml` build their own archives and upload them to Nexus Mods and Steam Workshop | GitHub Releases, Nexus Mods, and Steam Workshop track tags automatically; Paradox Mods still depends on a manual upload |
 | Version gate | `supported_version="v4.5.*"` in both descriptors | A game update outside that range prevents loading until the version is raised |
 | Installation | Extract the release contents into the game's mod directory, or subscribe through a store | Manual installs can drift from the published release |
 | Availability | Single-player and multiplayer mod-dependent sessions | Clients with mismatched versions fail the multiplayer checksum comparison |
@@ -386,7 +386,7 @@ The deployment unit is the packaged mod directory `mod/ui-deposit-blockers` toge
 
 ## ✅ Testing and Verification
 
-The repository contains no automated test suite, test project, lint configuration, or validation workflow; the two workflows publish tagged releases to Nexus Mods and Steam Workshop. Verification is achieved through identifier cross-checks and in-game observation. The engine is the only authority on whether the scripts parse and behave as intended, so the checks below concentrate on the coupling rules that the engine cannot report clearly.
+The repository contains no automated test suite, test project, lint configuration, or validation workflow; the three workflows build and publish tagged releases to GitHub Releases, Nexus Mods, and Steam Workshop. Verification is achieved through identifier cross-checks and in-game observation. The engine is the only authority on whether the scripts parse and behave as intended, so the checks below concentrate on the coupling rules that the engine cannot report clearly.
 
 Execute the principal automated verification with:
 
@@ -419,7 +419,7 @@ Material coverage gaps:
 ## ⚠️ Design Constraints
 
 - **Engine-owned execution:** All behaviour is the engine's; the mod can only declare parameters. Any behaviour the script API does not expose cannot be implemented here.
-- **No build or test toolchain:** There is no compilation, linting, or packaging command in the repository, so contributor verification relies on cross-check commands and in-game observation. The workflows, `.github/workflows/nexus-mods-release.yml` and `.github/workflows/steam-workshop-release.yml`, only publish a tagged release to Nexus Mods and Steam Workshop.
+- **No build or test toolchain:** There is no compilation, linting, or packaging command in the repository, so contributor verification relies on cross-check commands and in-game observation. The workflows, `.github/workflows/github-release.yml`, `.github/workflows/nexus-mods-release.yml`, and `.github/workflows/steam-workshop-release.yml`, only build and publish a tagged release to GitHub Releases, Nexus Mods, and Steam Workshop.
 - **Deliberate descriptor duplication:** The metadata exists twice and must be edited twice; the duplication is a distribution requirement rather than an oversight.
 - **Five-way identifier coupling:** Deposit identifier, technology identifier, two localisation keys, and two icon names must agree; the engine reports mismatches only indirectly.
 - **Scripted clearing time is fixed per blocker:** Clearing time is a static value (180 or 270) with no modifier hooks in the current definitions.

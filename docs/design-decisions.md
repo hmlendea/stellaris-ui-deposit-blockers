@@ -6,7 +6,7 @@ Each decision below is recorded only where repository evidence supports it. Engi
 
 **Decision:** The mod consists purely of engine-parsed text and image files.
 
-**Evidence:** No source files, build files, scripts, or validation workflows exist in the repository; the workflows only publish releases.
+**Evidence:** No source files, build files, scripts, or validation workflows exist in the repository; the workflows only package and publish releases.
 
 **Rationale:** A blocker mod has no computation to perform; the engine already owns placement, arbitration, and clearing. Adding code would require a different extension mechanism and increase the failure surface.
 
@@ -126,15 +126,15 @@ Each decision below is recorded only where repository evidence supports it. Engi
 
 ## D13: No validation workflow, publication workflows only
 
-**Decision:** The repository defines only publication workflows, which publish to Nexus Mods and Steam Workshop rather than validating content.
+**Decision:** The repository defines only publication workflows, which package and publish to GitHub Releases, Nexus Mods, and Steam Workshop rather than validating content.
 
-**Evidence:** `.github/workflows/` contains `nexus-mods-release.yml` and `steam-workshop-release.yml`; each job downloads the release archive and uploads it with `Nexus-Mods/upload-action@v1.0.0-beta.10` and `hmlendea/steam-workshop-update@v1.0.0` respectively.
+**Evidence:** `.github/workflows/` contains `github-release.yml`, `nexus-mods-release.yml`, and `steam-workshop-release.yml`; each job builds the release archive from the tagged content and uploads it with `softprops/action-gh-release@v2`, `Nexus-Mods/upload-action@v1.0.0-beta.10`, and `hmlendea/steam-workshop-update@v1.0.0` respectively.
 
 **Rationale:** No automated check is possible without a Stellaris installation, and the repository has no lint or build step, so a validation workflow cannot be expressed. Publication, by contrast, is a mechanical upload that does not require the engine.
 
-**Consequence:** Validity still depends on manual review, and [`testing.md`](testing.md) provides repository-runnable cross-checks that a future validation workflow could adopt. Nexus Mods and Steam Workshop publication become tag-driven while the remaining channels stay manual, which widens the channel-drift window unless the manual uploads accompany every tag.
+**Consequence:** Validity still depends on manual review, and [`testing.md`](testing.md) provides repository-runnable cross-checks that a future validation workflow could adopt. GitHub Releases, Nexus Mods, and Steam Workshop publication become tag-driven while Paradox Mods stays manual, which widens the channel-drift window unless the manual uploads accompany every tag.
 
-**Alternative rejected:** Automating the Paradox Mods and GitHub Releases uploads in the same change. Each needs its own identifiers and secrets, and none is evidenced for this repository yet.
+**Alternative rejected:** Automating the Paradox Mods upload in the same change. It needs its own identifiers and secrets, and none is evidenced for this repository yet.
 
 ## D14: English-only localisation
 

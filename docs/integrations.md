@@ -81,14 +81,14 @@ flowchart LR
     Repo[Git repository] -->|steam-workshop-release.yml on tag| Steam[Steam Workshop]
     Repo -->|manual packaging| Paradox[Paradox Mods]
     Repo -->|nexus-mods-release.yml on tag| Nexus[Nexus Mods]
-    Repo -->|release tag| GitHub[GitHub Releases]
+    Repo -->|github-release.yml on release| GitHub[GitHub Releases]
     Steam --> Player
     Paradox --> Player
     Nexus --> Player
     GitHub --> Player
 ```
 
-Each channel holds its own copy. The Nexus Mods and Steam Workshop uploads are automated on a tag push, and each consumes the archive already attached to the GitHub release; the remaining channels are updated by hand, so a change must still be published everywhere to avoid drift. Because the newest release tag predates the most recent repository commits, players using a channel that hosts the tagged archive receive older content than the repository contains.
+Each channel holds its own copy. The GitHub Releases, Nexus Mods, and Steam Workshop publications are automated on a tag push or release event, and each workflow builds its own archive from the tagged content; Paradox Mods is updated by hand, so a change must still be published there too to avoid drift. Because the newest release tag predates the most recent repository commits, players using a channel that hosts the tagged archive receive older content than the repository contains.
 
 ## Where to go next
 
