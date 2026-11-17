@@ -15,6 +15,7 @@ This document covers the guidelines and processes for contributing to this proje
     - [Making Changes](#making-changes)
     - [Pull Request Guidelines](#pull-request-guidelines)
   - [Documentation](#documentation)
+- [Security](#-security)
 - [Donations](#-donations)
 - [License](#-license)
 - [Getting Assistance](#-getting-assistance)
@@ -71,6 +72,10 @@ Verify your changes with the checks described in [ARCHITECTURE.md](./ARCHITECTUR
 - Revise relevant docs for changes.
 - Follow the documentation style guide.
 - Preview changes locally if possible.
+
+## 🔒 Security
+
+Report security vulnerabilities per the [Security Policy](./SECURITY.md).
 
 ## 💝 Donations
 

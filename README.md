@@ -35,6 +35,12 @@ For the detailed description of how the application handles privacy and personal
 
 The mod contains local game definitions, localisation, and image assets. It has no built-in personal-data transfer; interactions with distribution platforms are separate from mod execution.
 
+## 🔒 Security
+
+Universum Infinitum - Deposit Blockers ships static game definitions, localisation, and image assets, and does not implement accounts, telemetry, diagnostics, or built-in transfers of personal data.
+
+For information on reporting security vulnerabilities, see the [Security Policy](./SECURITY.md).
+
 # Contributions
 
 You are welcome to bring any suggestion, feedback or modification to this project.
