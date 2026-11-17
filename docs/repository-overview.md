@@ -4,7 +4,7 @@
 
 Universum Infinitum - Deposit Blockers extends Stellaris planet generation with seven additional deposit blockers and adds one society technology per blocker that unlocks its removal. The stated design goal in `README.md` is to increase variety in planetary blocker composition.
 
-The repository is a **mod**, not an application. It contains no executable code, no build pipeline, and no tests. Its deliverable is a directory of text and image files that the Stellaris engine parses.
+The repository is a **mod**, not an application. It contains no executable code, no build pipeline, and no tests. Its deliverable is a directory of text and image files that the Stellaris engine parses; the only GitHub Actions workflow publishes tagged releases to Nexus Mods.
 
 ## What the mod owns
 
@@ -43,7 +43,7 @@ The repository is a **mod**, not an application. It contains no executable code,
 | Shared technology weight group | `deposit_blockers`, decay `0.5` | Every technology block |
 | Distribution channels | Steam Workshop, Paradox Mods, Nexus Mods, GitHub Releases | `README.md` badges and `gh release list` |
 | Published releases | `v1.0` (2020-04-25), `v1.0.1` (2021-12-15) | Git tags and GitHub releases |
-| Continuous integration | None | `.github/workflows/` does not exist |
+| Continuous integration | Nexus Mods publication only | `.github/workflows/nexus-mods-release.yml` |
 | Localisation locales | `english` only | `localisation/english/` |
 
 ## Scope boundaries

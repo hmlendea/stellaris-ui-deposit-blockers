@@ -60,9 +60,9 @@ Invariants are rules that must remain true for the mod to load correctly and beh
 
 | # | Invariant | Evidence | Check | Violation effect |
 |---|-----------|----------|-------|------------------|
-| I30 | No build, test, or packaging step is required | No build files exist | File inspection | A contributor assuming a build step wastes effort |
+| I30 | No build, test, or packaging step is required | No build files exist; the sole workflow publishes an already-packaged archive | File inspection | A contributor assuming a build step wastes effort |
 | I31 | `.gitignore` ignores packaged archives (`*.zip`) only | `.gitignore` content | Inspect file | Accidental commit of a release archive, or accidental exclusion of mod content |
-| I32 | No CI workflow exists | `.github/workflows/` absent | Directory inspection | No automated validity gate — see [`testing.md`](testing.md) |
+| I32 | The only workflow is the Nexus Mods publisher; no validation workflow exists | `.github/workflows/nexus-mods-release.yml` is the sole workflow file | Directory inspection | No automated validity gate — see [`testing.md`](testing.md); tag pushes attempt a Nexus Mods upload |
 | I33 | The mod is load-order independent | All identifiers are mod-namespaced (`ui` infix); no vanilla override file exists | Identifier inspection | Load-order-dependent breakage |
 
 ## Invariants that are deliberately *not* asserted

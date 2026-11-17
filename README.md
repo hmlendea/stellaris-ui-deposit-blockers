@@ -5,7 +5,7 @@
 
 # Universum Infinitum - Deposit Blockers
 
-Universum Infinitum - Deposit Blockers is a declarative Stellaris mod that adds seven planet deposit blockers and one prerequisite society technology per blocker, increasing the variety of blocked districts across the galaxy.
+Universum Infinitum - Deposit Blockers is a declarative Stellaris mod that adds seven planet deposit blockers and one matching society technology to clear each of them, purely to increase planetary variety.
 
 ## 📑 Table of Contents
 
@@ -26,6 +26,7 @@ Universum Infinitum - Deposit Blockers is a declarative Stellaris mod that adds 
   - [Setup](#setup)
   - [Test](#test)
   - [Release](#release)
+- [GitHub Actions](#-github-actions)
 - [Project Structure](#-project-structure)
   - [Directories](#directories)
 - [Architecture](#-architecture)
@@ -46,14 +47,15 @@ Universum Infinitum - Deposit Blockers is a declarative Stellaris mod that adds 
 
 ## ✨ Capabilities
 
-- Adds seven planet deposit blockers: `Ashland`, `Canyon`, `Floodplain`, `Giant Earthworms`, `Lava Lake`, `Sea Monsters`, and `Tarland`.
-- Adds one society technology per blocker, in tiers 1 and 2, that unlocks the removal of the matching blocker.
-- Restores one maximum district when a `-1` blocker is cleared and two when a `-2` blocker is cleared.
-- Gates placement by climate, planet size, and free district count, so blockers appear only on plausible worlds.
-- Presents every blocker and technology with its own icon, display name, and description.
-- Keeps the seven technologies in a shared `deposit_blockers` weight group, so they are researched gradually instead of all at once.
-- Grants food to a devouring swarm when `Giant Earthworms` or `Sea Monsters` are cleared.
-- Overrides no vanilla file and declares no dependency on any other mod.
+- Seven planet deposit blockers: `Ashland`, `Canyon`, `Floodplain`, `Giant Earthworms`, `Lava Lake`, `Sea Monsters`, and `Tarland`.
+- One dedicated society technology per blocker, offered at tier 1 or tier 2 within the `new_worlds` category.
+- Every blocker removes one or two maximum districts until it is cleared through its technology.
+- Thematic planet-class weighting, so each blocker favours the worlds that match its flavour.
+- Placement gated by planet class, climate family, planet size, and remaining free city districts.
+- Two organic blockers grant food to devouring swarms when they are cleared.
+- Every blocker and technology ships its own icon, display name, and description.
+- The seven technologies share a `deposit_blockers` weight group, so they are researched gradually instead of all at once.
+- Mod-namespaced identifiers with a `ui` infix, so the mod collides with neither vanilla nor third-party definitions.
 
 ## 🚀 Usage
 
@@ -66,13 +68,13 @@ The mod is declarative content: it contains no executable code, and the game eng
 
 ## ⚠️ Known Limitations
 
-- Blockers are placed during planet generation, so weight and gate changes affect only planets generated afterwards; existing saves keep their original blockers.
+- Blocker placement is decided at planet-generation time, so weight and gate changes affect only planets generated afterwards; existing saves keep their original blockers.
 - Clearing a blocker is permanent. No definition re-adds a cleared blocker.
 - The removal technologies stay unavailable until the empire owns two or more planets and controls a planet carrying the matching blocker, and nomadic empires never receive them.
 - Researching one technology of the `deposit_blockers` group halves the availability of the remaining six.
-- Localisation ships in English only.
+- Only English localisation is provided; other locales display the English strings.
 - The repository content is ahead of the newest published GitHub release (`v1.0.1`), so a store installation may serve older definitions.
-- There is no test suite, continuous integration, or build step; behaviour is verified by running the repository cross-checks and by playing the game.
+- Validity of the definitions depends on manual cross-checks and in-game observation, because the engine reports malformed blocks only indirectly.
 
 ## 📦 Installation
 
@@ -128,16 +130,20 @@ The mod has no runtime behaviour of its own: the game engine parses its files, s
 
 ### Requirements
 
-- Stellaris `v4.5.*` for in-game verification.
+- [Stellaris](https://store.steampowered.com/app/281990/Stellaris/) `v4.5.*` for in-game verification.
 - Git, for cloning the repository.
 - A POSIX shell providing `grep`, `test`, and `diff` for the content cross-checks.
 - No compiler, runtime, package manager, build step, or test framework is required.
 
 ### Setup
 
+Clone the repository and make its contents available to the game's mod directory:
+
 ```bash
 git clone https://github.com/hmlendea/stellaris-ui-deposit-blockers.git
 cd stellaris-ui-deposit-blockers
+ln -s "$PWD/ui-deposit-blockers" "$HOME/.steam/steam/steamapps/common/Stellaris/mod/ui-deposit-blockers"
+ln -s "$PWD/ui-deposit-blockers.mod" "$HOME/.steam/steam/steamapps/common/Stellaris/mod/ui-deposit-blockers.mod"
 ```
 
 No dependency installation, compilation, or packaging step is required; the mod files are edited directly and loaded by the game.
@@ -173,20 +179,43 @@ diff ui-deposit-blockers.mod ui-deposit-blockers/descriptor.mod
 1. Confirm the change set covers every coupled surface: definitions, localisation keys, and icons.
 2. Run the cross-checks above against the exact content being published.
 3. Raise `supported_version` in both descriptors when targeting a new game-version family, and keep the two files identical.
-4. Tag the release in Git.
-5. Publish the same content set to Steam Workshop, Paradox Mods, Nexus Mods, and GitHub Releases, because each channel stores an independent copy and can drift.
+4. Tag the release in Git and attach the packaged `ui-deposit-blockers_<version>.zip` archive to the GitHub release.
+5. Let `.github/workflows/nexus-mods-release.yml` publish the tag to Nexus Mods, and upload the same content set manually to Steam Workshop, Paradox Mods, and GitHub Releases, because each channel stores an independent copy and can drift.
+
+## ⚙️ GitHub Actions
+
+| Workflow | Purpose | What it does |
+|----------|---------|--------------|
+| [ Nexus Mods ](https://github.com/hmlendea/stellaris-ui-deposit-blockers/blob/master/.github/workflows/nexus-mods-release.yml) | Publish releases to Nexus Mods | Runs on a `v*.*.*` tag push or a manual dispatch with a `tag` input, downloads the release archive `ui-deposit-blockers_<version>.zip` from the matching GitHub release, and uploads it with the `Nexus-Mods/upload-action` action |
 
 ## 🗂️ Project Structure
 
-The repository is a Stellaris mod accompanied by a knowledge base. Two descriptor files register the mod, one directory holds the shipped payload, and `docs/` documents it. Nothing is compiled or generated.
+```
+.
+├── .github/
+│   ├── FUNDING.yml
+│   ├── ui_cover.png
+│   └── workflows/
+│       └── nexus-mods-release.yml
+├── docs/                       # Documentation knowledge base
+├── ui-deposit-blockers.mod     # Root mod descriptor
+└── ui-deposit-blockers/        # Mod payload
+    ├── descriptor.mod
+    ├── common/
+    ├── gfx/
+    └── localisation/
+```
 
 ### Directories
 
 | Directory | Purpose |
 |-----------|---------|
-| `ui-deposit-blockers/` | Shipped mod payload: deposit definitions, technology definitions, English localisation, and icons |
-| `docs/` | Knowledge base covering architecture, data model, flows, behaviour, and operations |
-| `.github/` | Funding declaration and the repository cover image |
+| `ui-deposit-blockers/` | The complete mod payload shipped to every distribution channel |
+| `ui-deposit-blockers/common/` | Deposit blocker and society technology definitions |
+| `ui-deposit-blockers/gfx/interface/icons/` | Blocker and technology icons, resolved by file name |
+| `ui-deposit-blockers/localisation/english/` | English strings keyed by definition identifier |
+| `docs/` | Documentation knowledge base; not shipped to players |
+| `.github/` | Funding declaration, repository cover image, and the Nexus Mods publication workflow |
 
 ## 🏗️ Architecture
 
@@ -228,9 +257,12 @@ You are welcome to submit any suggestion, feedback, or modification to this proj
 
 When doing so, please:
 - Maintain cross-platform compatibility
+- Preserve the existing public contract unless a breaking change is intentional
 - Submit focused pull requests that conform to the existing code style
 - Maintain your branch synchronised with `master`
 - Revise the documentation when functionality changes
+- Properly test all modifications, including edge cases and error conditions
+- Include tests for additional or modified functionality
 - Raise a new [issue](https://github.com/hmlendea/stellaris-ui-deposit-blockers/issues) for problems or suggestions
 
 See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
@@ -253,7 +285,7 @@ See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct exp
 
 ## 🔒 Security
 
-Universum Infinitum - Deposit Blockers ships static game definitions, localisation, and image assets, and implements no accounts, telemetry, diagnostics, or transfers of personal data.
+Universum Infinitum - Deposit Blockers ships static game definitions, localisation, and image assets, and neither implements accounts, telemetry, or diagnostics, nor transfers personal data.
 
 For information on reporting security vulnerabilities, see the [Security Policy](./SECURITY.md).
 

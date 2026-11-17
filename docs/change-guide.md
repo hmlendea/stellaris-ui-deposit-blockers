@@ -57,12 +57,13 @@ Version bumps (`supported_version`) and tag changes must be applied to both desc
 
 ## Release process
 
-There is no release tooling. To publish:
+There is no build or packaging tooling. Nexus Mods publication is automated; the other channels are manual. To publish:
 
 1. Update both descriptors' `supported_version` if targeting a new game-version family.
-2. Tag the release.
-3. Upload the repository contents to each distribution channel (Steam Workshop, Paradox Mods, Nexus Mods, GitHub Releases).
-4. Run the cross-checks against the tagged contents, not just the working tree.
+2. Run the cross-checks against the tagged contents, not just the working tree.
+3. Create the release archive and attach it to the GitHub release for the tag.
+4. Tag the release; `.github/workflows/nexus-mods-release.yml` then downloads `ui-deposit-blockers_<version>.zip` and uploads it to Nexus Mods (`NEXUSMODS_API_KEY` secret required). The workflow can also be dispatched manually with an existing `tag`.
+5. Upload the same content set manually to Steam Workshop, Paradox Mods, and GitHub Releases so that no channel drifts.
 
 ## Where to go next
 

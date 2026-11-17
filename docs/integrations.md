@@ -17,7 +17,7 @@ The mod has no built-in integrations of the conventional kind — no HTTP client
 | Save-game subsystem | Outbound (engine-owned) | Planet state | Persisted identifiers must resolve | Unverified on definition removal — see [A8](ambiguities-and-open-questions.md) |
 | Steam Workshop | Delivery | Published item `2073660612` | Platform packaging | Stale snapshot |
 | Paradox Mods | Delivery | Listing `34638` | Platform packaging | Stale snapshot |
-| Nexus Mods | Delivery | Listing `91` | Platform packaging | Stale snapshot |
+| Nexus Mods | Delivery | Listing `91`, released file `955873` | Platform packaging; automated by `.github/workflows/nexus-mods-release.yml` | Upload failure leaves the channel unbumped |
 | GitHub Releases | Delivery | Repository releases | Archive contents | Repository ahead of latest release |
 
 ## Engine integration in detail
@@ -80,7 +80,7 @@ Neither has been reported, and neither has been ruled out by survey — see [A10
 flowchart LR
     Repo[Git repository] -->|manual packaging| Steam[Steam Workshop]
     Repo -->|manual packaging| Paradox[Paradox Mods]
-    Repo -->|manual packaging| Nexus[Nexus Mods]
+    Repo -->|nexus-mods-release.yml on tag| Nexus[Nexus Mods]
     Repo -->|release tag| GitHub[GitHub Releases]
     Steam --> Player
     Paradox --> Player
@@ -88,7 +88,7 @@ flowchart LR
     GitHub --> Player
 ```
 
-Each channel holds its own copy. There is no synchronisation mechanism, so a change must be published to all four channels to avoid drift. Because the newest release tag predates the most recent repository commits, players using a channel that hosts the tagged archive receive older content than the repository contains.
+Each channel holds its own copy. Only the Nexus Mods upload is automated, and it consumes the archive already attached to the GitHub release; the remaining channels are updated by hand, so a change must still be published everywhere to avoid drift. Because the newest release tag predates the most recent repository commits, players using a channel that hosts the tagged archive receive older content than the repository contains.
 
 ## Where to go next
 
