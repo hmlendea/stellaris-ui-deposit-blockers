@@ -155,7 +155,7 @@ resources = {
 
 **Unknown:** Whether a formal support window or deprecation policy exists.
 
-**Evidence:** No `SUPPORT.md`, `CHANGELOG.md`, `ROADMAP.md`, or versioning statement. `SECURITY.md` nonetheless lists all four distribution channels as supported for the latest version. Nexus Mods publication is now automated by `.github/workflows/nexus-mods-release.yml` and documented in [`build-and-deployment.md`](build-and-deployment.md), but the Steam Workshop, Paradox Mods, and GitHub Releases uploads remain undocumented beyond the repository-root README, and no support window or deprecation policy exists.
+**Evidence:** No `SUPPORT.md`, `CHANGELOG.md`, `ROADMAP.md`, or versioning statement. `SECURITY.md` nonetheless lists all four distribution channels as supported for the latest version. Nexus Mods and Steam Workshop publication is now automated by `.github/workflows/nexus-mods-release.yml` and `.github/workflows/steam-workshop-release.yml` and documented in [`build-and-deployment.md`](build-and-deployment.md), but the Paradox Mods and GitHub Releases uploads remain undocumented beyond the repository-root README, and no support window or deprecation policy exists.
 
 **Why it matters:** Contributors cannot determine how to propose a release or how long a version is supported.
 

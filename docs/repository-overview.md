@@ -43,7 +43,7 @@ The repository is a **mod**, not an application. It contains no executable code,
 | Shared technology weight group | `deposit_blockers`, decay `0.5` | Every technology block |
 | Distribution channels | Steam Workshop, Paradox Mods, Nexus Mods, GitHub Releases | `README.md` badges and `gh release list` |
 | Published releases | `v1.0` (2020-04-25), `v1.0.1` (2021-12-15) | Git tags and GitHub releases |
-| Continuous integration | Nexus Mods publication only | `.github/workflows/nexus-mods-release.yml` |
+| Continuous integration | Nexus Mods and Steam Workshop publication only | `.github/workflows/nexus-mods-release.yml`, `.github/workflows/steam-workshop-release.yml` |
 | Localisation locales | `english` only | `localisation/english/` |
 
 ## Scope boundaries
