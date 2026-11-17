@@ -27,6 +27,14 @@ Universum Infinitum - Deposit Blockers is a declarative Stellaris mod that adds 
 
 See the [Architecture Documentation](./ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
 
+## 🛡️ Privacy and Data
+
+Universum Infinitum - Deposit Blockers does not request, collect, transmit, or persist personal data; its files define planet deposit blockers and their removal technologies for Stellaris.
+
+For the detailed description of how the application handles privacy and personal data, see the [Privacy Statement](./PRIVACY.md).
+
+The mod contains local game definitions, localisation, and image assets. It has no built-in personal-data transfer; interactions with distribution platforms are separate from mod execution.
+
 # Contributions
 
 You are welcome to bring any suggestion, feedback or modification to this project.
