@@ -21,6 +21,12 @@ It should also be compatible with any other mods.
  - Download the [latest release](https://github.com/hmlendea/stellaris-ui-deposit-blockers/releases)
  - Extract the contents into your game's mod directory
 
+## 🏗️ Architecture
+
+Universum Infinitum - Deposit Blockers is a declarative Stellaris mod that adds seven planet deposit blockers and one prerequisite society technology per blocker, all consumed by the game engine without any mod-owned executable code.
+
+See the [Architecture Documentation](./ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
+
 # Contributions
 
 You are welcome to bring any suggestion, feedback or modification to this project.
