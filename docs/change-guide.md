@@ -57,13 +57,13 @@ Version bumps (`supported_version`) and tag changes must be applied to both desc
 
 ## Release process
 
-There is no build or packaging tooling. Nexus Mods and Steam Workshop publication is automated; the other channels are manual. To publish:
+There is no build or packaging tooling in the repository itself; all three publication workflows build the archive from the tagged content, and GitHub Releases, Nexus Mods, and Steam Workshop publication is automated while the Paradox Mods upload is manual. To publish:
 
 1. Update both descriptors' `supported_version` if targeting a new game-version family.
 2. Run the cross-checks against the tagged contents, not just the working tree.
-3. Create the release archive and attach it to the GitHub release for the tag.
-4. Tag the release; `.github/workflows/nexus-mods-release.yml` downloads `ui-deposit-blockers_<version>.zip` and uploads it to Nexus Mods (`NEXUSMODS_API_KEY` secret required), and `.github/workflows/steam-workshop-release.yml` downloads and unzips the same archive and uploads it to Steam Workshop item `2073660612` (`STEAM_USERNAME`, `STEAM_PASSWORD`, and `STEAM_2FA_SEED` secrets required). The Nexus Mods workflow can also be dispatched manually with an existing `tag`.
-5. Upload the same content set manually to Paradox Mods and GitHub Releases so that no channel drifts.
+3. Tag the release and publish a GitHub release; `.github/workflows/github-release.yml` builds `ui-deposit-blockers_<version>.zip` (`GITHUB_TOKEN` is provided automatically) and attaches it to the release.
+4. The tag push also triggers `.github/workflows/nexus-mods-release.yml`, which builds the archive and uploads it to Nexus Mods (`NEXUSMODS_API_KEY` secret required), and `.github/workflows/steam-workshop-release.yml`, which builds and extracts the archive and uploads it to Steam Workshop item `2073660612` (`STEAM_USERNAME`, `STEAM_PASSWORD`, and `STEAM_2FA_SEED` secrets required). The Nexus Mods workflow can also be dispatched manually with an existing `tag`.
+5. Upload the same content set manually to Paradox Mods so that no channel drifts.
 
 ## Where to go next
 

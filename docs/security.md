@@ -36,7 +36,7 @@ The most consequential surface is the `.mod` descriptor `path` key, because a cr
 | A third-party mod redefining a `d_ui_*` or `tech_d_ui_*` identifier to hijack behaviour | Mod-namespaced identifiers with the `ui` infix reduce collision likelihood; collision is not impossible | Maintainer convention |
 | A malformed `.dds` file exploiting a parser bug in the engine or operating system | None mod-side | Engine and operating system vendor |
 | A malicious fork redistributing the mod under the project name | The root `SECURITY.md` scope statement excludes downstream forks from maintainer responsibility | Documented, not technically enforced |
-| Silent drift between the repository and a distribution channel | Automated Nexus Mods and Steam Workshop uploads on a tag push; manual Paradox Mods and GitHub Releases procedures | Maintainer |
+| Silent drift between the repository and a distribution channel | Automated GitHub Releases, Nexus Mods, and Steam Workshop publication on a release or tag; manual Paradox Mods procedure | Maintainer |
 
 ## What is not a threat here
 

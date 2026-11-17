@@ -2,7 +2,7 @@
 
 ## Status statement
 
-There is no test suite, lint configuration, validation workflow, or build step in this repository. The workflows are `.github/workflows/nexus-mods-release.yml` and `.github/workflows/steam-workshop-release.yml`, which publish a tagged release to Nexus Mods and Steam Workshop and check nothing. Verification is therefore manual, static, and observational — the only automated gate visible to the mod author is a human running the cross-checks below and then playing the game. This is a consequence of the declarative architecture ([architecture.md](architecture.md)), not of an intentional decision to skip validation.
+There is no test suite, lint configuration, validation workflow, or build step in this repository. The workflows are `.github/workflows/github-release.yml`, `.github/workflows/nexus-mods-release.yml`, and `.github/workflows/steam-workshop-release.yml`, which package the tagged content and publish it to GitHub Releases, Nexus Mods, and Steam Workshop, and check nothing. Verification is therefore manual, static, and observational — the only automated gate visible to the mod author is a human running the cross-checks below and then playing the game. This is a consequence of the declarative architecture ([architecture.md](architecture.md)), not of an intentional decision to skip validation.
 
 ## Verification that runs entirely in-window
 

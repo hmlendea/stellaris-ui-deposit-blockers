@@ -13,9 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v7
 
-    - name: Download the release asset
+    - name: Build the release archive
       run: |
-        wget "https://github.com/hmlendea/stellaris-ui-deposit-blockers/releases/download/${{github.ref_name}}/ui-deposit-blockers_${GITHUB_REF:11}.zip" -O "release.zip"
+        zip -r "release.zip" "ui-deposit-blockers" "ui-deposit-blockers.mod"
+
+    - name: Extract the release archive
+      run: |
         unzip "release.zip" -d "release/"
 
     - name: Upload
