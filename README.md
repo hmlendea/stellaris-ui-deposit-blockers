@@ -45,6 +45,26 @@ For information on reporting security vulnerabilities, see the [Security Policy]
 
 See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
 
+## 📚 Documentation
+
+Detailed documentation for the mod is available in the [`docs/`](./docs/INDEX.md) directory.
+
+| Resource | Description |
+|----------|-------------|
+| [Documentation Index](./docs/INDEX.md) | Master index of every document in the knowledge base |
+| [Quick Start](./docs/quick-start.md) | Installation, enabling, and confirmation of a working install |
+| [Repository Overview](./docs/repository-overview.md) | What the mod is, what it owns, and what the game engine owns |
+| [Architecture](./docs/architecture.md) | Engine integration model, composition, and boundary rules |
+| [Data Model](./docs/data-model.md) | Deposit and technology field reference |
+| [Definition Reference](./docs/api-reference/INDEX.md) | Schema index and identifier catalogue |
+| [Flows](./docs/flows/startup-and-loading.md) | Startup, placement, research, and clearing execution flows |
+| [Behaviour](./docs/behaviour/blocker-appearance.md) | What a player observes when blockers appear and are cleared |
+| [Change Guide](./docs/change-guide.md) | How to add, retune, rename, or remove a blocker safely |
+| [Testing](./docs/testing.md) | Cross-check commands, manual verification, and coverage gaps |
+| [Troubleshooting](./docs/troubleshooting.md) | Diagnosis table for symptoms, causes, and resolutions |
+| [Invariants](./docs/invariants.md) | Identifier coupling, weight baseline, and descriptor rules |
+| [FAQ](./docs/faq.md) | Frequently asked questions |
+
 # Contributions
 
 You are welcome to bring any suggestion, feedback or modification to this project.
