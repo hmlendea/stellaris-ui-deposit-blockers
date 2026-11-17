@@ -6,7 +6,7 @@ Each decision below is recorded only where repository evidence supports it. Engi
 
 **Decision:** The mod consists purely of engine-parsed text and image files.
 
-**Evidence:** No source files, build files, scripts, or workflows exist in the repository.
+**Evidence:** No source files, build files, scripts, or validation workflows exist in the repository; the sole workflow publishes to Nexus Mods.
 
 **Rationale:** A blocker mod has no computation to perform; the engine already owns placement, arbitration, and clearing. Adding code would require a different extension mechanism and increase the failure surface.
 
@@ -124,15 +124,17 @@ Each decision below is recorded only where repository evidence supports it. Engi
 
 **Consequence:** Any metadata edit must be applied twice. [I1](invariants.md) makes this checkable with a single `diff`.
 
-## D13: No continuous integration
+## D13: No validation workflow, a single publication workflow
 
-**Decision:** The repository defines no GitHub Actions workflow.
+**Decision:** The repository defines one GitHub Actions workflow, and it publishes to Nexus Mods rather than validating content.
 
-**Evidence:** `.github/workflows/` does not exist; `.github/` contains only `FUNDING.yml` and `ui_cover.png`.
+**Evidence:** `.github/workflows/` contains only `nexus-mods-release.yml`; the job downloads the release archive and uploads it with `Nexus-Mods/upload-action@v1.0.0-beta.10`.
 
-**Rationale:** Not established. No automated check is possible without a Stellaris installation, and the repository has no lint or build step.
+**Rationale:** No automated check is possible without a Stellaris installation, and the repository has no lint or build step, so a validation workflow cannot be expressed. Publication, by contrast, is a mechanical upload that does not require the engine.
 
-**Consequence:** Validity depends on manual review. [`testing.md`](testing.md) provides repository-runnable cross-checks that a future workflow could adopt.
+**Consequence:** Validity still depends on manual review, and [`testing.md`](testing.md) provides repository-runnable cross-checks that a future validation workflow could adopt. Nexus Mods publication becomes tag-driven while the other three channels stay manual, which widens the channel-drift window unless the manual uploads accompany every tag.
+
+**Alternative rejected:** Automating the Steam Workshop, Paradox Mods, and GitHub Releases uploads in the same change. Each needs its own identifiers and secrets, and none is evidenced for this repository yet.
 
 ## D14: English-only localisation
 

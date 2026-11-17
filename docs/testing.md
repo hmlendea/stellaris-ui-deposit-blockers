@@ -2,7 +2,7 @@
 
 ## Status statement
 
-There is no test suite, lint configuration, CI workflow, or build step in this repository. Verification is manual, static, and observational — the only automated gate visible to the mod author is a human running the cross-checks below and then playing the game. This is a consequence of the declarative architecture ([architecture.md](architecture.md)), not of an intentional decision to skip validation.
+There is no test suite, lint configuration, validation workflow, or build step in this repository. The only workflow is `.github/workflows/nexus-mods-release.yml`, which publishes a tagged release to Nexus Mods and checks nothing. Verification is therefore manual, static, and observational — the only automated gate visible to the mod author is a human running the cross-checks below and then playing the game. This is a consequence of the declarative architecture ([architecture.md](architecture.md)), not of an intentional decision to skip validation.
 
 ## Verification that runs entirely in-window
 

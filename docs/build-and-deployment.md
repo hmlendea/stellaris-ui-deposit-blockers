@@ -22,15 +22,35 @@ The mod ships to four distribution channels, all evidenced in `README.md`:
 | Nexus Mods | Listing `91` | <https://www.nexusmods.com/stellaris/mods/91> |
 | GitHub Releases | Repository releases | <https://github.com/hmlendea/stellaris-ui-deposit-blockers/releases> |
 
-There is no deployment automation, no scripting, and no CI pipeline.
+There is no build step and no packaging automation. The repository now carries one deployment workflow, `.github/workflows/nexus-mods-release.yml`, which publishes an existing GitHub release archive to Nexus Mods; the other three channels remain manual.
+
+## Automation
+
+The Nexus Mods publication is automated by `.github/workflows/nexus-mods-release.yml`, which follows the same tag-triggered pattern as the other Universum Infinitum mods:
+
+| Trigger | Behaviour |
+|---------|-----------|
+| Push of a `v*.*.*` tag | Publishes that tag to Nexus Mods |
+| Manual dispatch with a `tag` input | Publishes the supplied tag to Nexus Mods |
+
+| Aspect | Value |
+|--------|-------|
+| Workflow file | `.github/workflows/nexus-mods-release.yml` |
+| Job | `release`, on `ubuntu-latest` |
+| Downloaded artefact | `ui-deposit-blockers_<version>.zip` from the matching GitHub release |
+| Upload | `Nexus-Mods/upload-action@v1.0.0-beta.10`, `file_id` `955873`, category `main` |
+| Required secret | `NEXUSMODS_API_KEY` |
+| Version handling | `VERSION` is the tag (leading `v` stripped for the archive name) |
+
+The workflow consumes the release archive rather than building one, so the tag must already have a GitHub release carrying the `ui-deposit-blockers_<version>.zip` asset. Publications to Steam Workshop, Paradox Mods, and GitHub Releases remain manual.
 
 ## Publishing procedure
 
 1. Confirm the change set is complete across all coupled surfaces — see [`change-guide.md`](change-guide.md).
 2. Run the cross-checks in [`testing.md`](testing.md) against the tagged contents.
 3. Raise `supported_version` in both descriptors if targeting a new game-version family; confirm `diff` is clean.
-4. Tag the release in Git.
-5. Upload the same content set to each channel so that no channel drifts.
+4. Tag the release in Git and attach the packaged archive to the GitHub release.
+5. Let `.github/workflows/nexus-mods-release.yml` publish the tag to Nexus Mods, and upload the same content set manually to the other channels so that no channel drifts.
 
 Channel drift risk is the material operational hazard: each channel stores an independent copy, and a channel updated later than the others serves a snapshot of an older definition set. See [`ambiguities-and-open-questions.md`](ambiguities-and-open-questions.md) A12 for the absent documented release process.
 
