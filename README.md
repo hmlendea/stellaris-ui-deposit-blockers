@@ -41,6 +41,10 @@ Universum Infinitum - Deposit Blockers ships static game definitions, localisati
 
 For information on reporting security vulnerabilities, see the [Security Policy](./SECURITY.md).
 
+## 📜 Code of Conduct
+
+See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
+
 # Contributions
 
 You are welcome to bring any suggestion, feedback or modification to this project.
