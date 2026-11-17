@@ -1,11 +1,10 @@
 @blocker_high = 10
 @blocker_medium = 7
 @blocker_low = 5
-@blocker_very_low = 2
 
 # Ashland
 d_ui_ashland_blocker = {
-    time = 300
+    time = 270
 
     is_for_colonizable = yes
     category = deposit_cat_blockers
@@ -13,7 +12,7 @@ d_ui_ashland_blocker = {
     resources = {
         category = deposit_blockers
         cost = {
-            energy = 500
+            energy = 1000
         }
     }
 
@@ -55,14 +54,14 @@ d_ui_ashland_blocker = {
 
 # Canyon
 d_ui_canyon_blocker = {
-    time = 300
+    time = 270
 
     is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
         cost = {
-            energy = 500
+            energy = 1000
         }
     }
 
@@ -103,14 +102,14 @@ d_ui_canyon_blocker = {
 
 # Floodplain
 d_ui_floodplain_blocker = {
-    time = 175
+    time = 180
 
     is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
         cost = {
-            energy = 300
+            energy = 500
         }
     }
 
@@ -147,14 +146,14 @@ d_ui_floodplain_blocker = {
 
 # Giant Earthworms
 d_ui_giant_earthworms_blocker = {
-    time = 100
+    time = 270
 
     is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
         cost = {
-            energy = 200
+            energy = 500
         }
     }
 
@@ -207,14 +206,14 @@ d_ui_giant_earthworms_blocker = {
 
 # Lava Lake
 d_ui_lava_lake_blocker = {
-    time = 175
+    time = 180
 
     is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
         cost = {
-            energy = 300
+            energy = 500
         }
     }
 
@@ -255,14 +254,14 @@ d_ui_lava_lake_blocker = {
 
 # Sea Monsters
 d_ui_sea_monsters_blocker = {
-    time = 100
+    time = 270
 
     is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
         cost = {
-            energy = 200
+            energy = 500
         }
     }
 
@@ -319,15 +318,15 @@ d_ui_sea_monsters_blocker = {
 
 # Tarland
 d_ui_tarland_blocker = {
-    time = 100
+    time = 270
 
     is_for_colonizable = yes
     category = deposit_cat_blockers
     
     resources = {
         cost = {
-            energy = 350
-            minerals = 150
+            energy = 750
+            minerals = 250
         }
     }
 
