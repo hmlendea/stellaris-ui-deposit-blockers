@@ -1,9 +1,3 @@
-@tier1cost2 = 750
-@tier2cost2 = 2000
-
-@tier1weight2 = 95
-@tier2weight2 = 75
-
 tech_d_ui_ashland_blocker = {
     cost = @tier1cost2
     area = society
@@ -11,6 +5,10 @@ tech_d_ui_ashland_blocker = {
     category = { new_worlds }
     prerequisites = { "tech_colonization_1" }
     weight = @tier1weight2
+
+    potential = {
+        is_nomadic = no
+    }
 
     weight_groups = {
         deposit_blockers
@@ -41,10 +39,7 @@ tech_d_ui_ashland_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -66,10 +61,7 @@ tech_d_ui_ashland_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -86,6 +78,10 @@ tech_d_ui_canyon_blocker = {
     prerequisites = { "tech_colonization_1" }
     weight = @tier1weight2
 
+    potential = {
+        is_nomadic = no
+    }
+
     weight_groups = {
         deposit_blockers
     }
@@ -115,10 +111,7 @@ tech_d_ui_canyon_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -140,10 +133,7 @@ tech_d_ui_canyon_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -160,6 +150,10 @@ tech_d_ui_floodplain_blocker = {
     prerequisites = { "tech_colonization_1" }
     weight = @tier1weight2
 
+    potential = {
+        is_nomadic = no
+    }
+
     weight_groups = {
         deposit_blockers
     }
@@ -190,10 +184,7 @@ tech_d_ui_floodplain_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -215,10 +206,7 @@ tech_d_ui_floodplain_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -235,6 +223,10 @@ tech_d_ui_giant_earthworms_blocker = {
     prerequisites = { "tech_colonization_1" }
     weight = @tier2weight2
 
+    potential = {
+        is_nomadic = no
+    }
+
     weight_groups = {
         deposit_blockers
     }
@@ -265,10 +257,7 @@ tech_d_ui_giant_earthworms_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -290,10 +279,7 @@ tech_d_ui_giant_earthworms_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -310,6 +296,10 @@ tech_d_ui_lava_lake_blocker = {
     prerequisites = { "tech_colonization_1" }
     weight = @tier2weight2
 
+    potential = {
+        is_nomadic = no
+    }
+
     weight_groups = {
         deposit_blockers
     }
@@ -340,10 +330,7 @@ tech_d_ui_lava_lake_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -365,10 +352,7 @@ tech_d_ui_lava_lake_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -385,6 +369,10 @@ tech_d_ui_sea_monsters_blocker = {
     prerequisites = { "tech_colonization_1" }
     weight = @tier2weight2
 
+    potential = {
+        is_nomadic = no
+    }
+
     weight_groups = {
         deposit_blockers
     }
@@ -415,10 +403,7 @@ tech_d_ui_sea_monsters_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -440,10 +425,7 @@ tech_d_ui_sea_monsters_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -460,6 +442,10 @@ tech_d_ui_tarland_blocker = {
     prerequisites = { "tech_colonization_1" }
     weight = @tier1weight2
 
+    potential = {
+        is_nomadic = no
+    }
+
     weight_groups = {
         deposit_blockers
     }
@@ -490,10 +476,7 @@ tech_d_ui_tarland_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
@@ -515,10 +498,7 @@ tech_d_ui_tarland_blocker = {
         }
         modifier = {
             factor = 1.25
-            research_leader = {
-                area = society
-                has_trait = "leader_trait_expertise_new_worlds"
-            }
+            has_trait_in_council = { TRAIT = leader_trait_expertise_new_worlds }
         }
         modifier = {
             factor = 0
