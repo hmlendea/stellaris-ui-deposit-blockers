@@ -174,16 +174,16 @@ diff ui-deposit-blockers.mod ui-deposit-blockers/descriptor.mod
 1. Confirm the change set covers every coupled surface: definitions, localisation keys, and icons.
 2. Run the cross-checks above against the exact content being published.
 3. Raise `supported_version` in both descriptors when targeting a new game-version family, and keep the two files identical.
-4. Tag the release in Git and publish a GitHub release; the GitHub Release workflow builds the archive from the tagged content.
+4. Tag the release in Git and publish a GitHub release; the GitHub Release workflow writes the version into both descriptors and builds the archive from the tagged content.
 5. Let `.github/workflows/nexus-mods-release.yml` and `.github/workflows/steam-workshop-release.yml` publish the tag to Nexus Mods and Steam Workshop, and upload the same content set manually to Paradox Mods, because each channel stores an independent copy and can drift.
 
 ## ⚙️ GitHub Actions
 
 | Workflow | Purpose | What it does |
 |----------|---------|--------------|
-| [ Nexus Mods ](https://github.com/hmlendea/stellaris-ui-deposit-blockers/blob/master/.github/workflows/nexus-mods-release.yml) | Publish releases to Nexus Mods | Runs on a `v*.*.*` tag push or a manual dispatch with a `tag` input, builds the release archive containing `ui-deposit-blockers/` and `ui-deposit-blockers.mod`, and uploads it with the `Nexus-Mods/upload-action` action |
-| [ Steam Workshop ](https://github.com/hmlendea/stellaris-ui-deposit-blockers/blob/master/.github/workflows/steam-workshop-release.yml) | Publish releases to Steam Workshop | Runs on a `v*.*.*` tag push, builds and extracts the release archive containing `ui-deposit-blockers/` and `ui-deposit-blockers.mod`, and uploads it to Workshop item `2073660612` with the `hmlendea/steam-workshop-update` action |
-| [ GitHub Release ](https://github.com/hmlendea/stellaris-ui-deposit-blockers/blob/master/.github/workflows/github-release.yml) | Publish the release archive to GitHub Releases | Runs when a GitHub release is published, builds `ui-deposit-blockers_<version>.zip` containing `ui-deposit-blockers/` and `ui-deposit-blockers.mod`, and uploads it with the `softprops/action-gh-release` action |
+| [ Nexus Mods ](https://github.com/hmlendea/stellaris-ui-deposit-blockers/blob/master/.github/workflows/nexus-mods-release.yml) | Publish releases to Nexus Mods | Runs on a `v*.*.*` tag push or a manual dispatch with a `tag` input, writes the version into both descriptors, builds the release archive containing `ui-deposit-blockers/` and `ui-deposit-blockers.mod`, and uploads it with the `Nexus-Mods/upload-action` action |
+| [ Steam Workshop ](https://github.com/hmlendea/stellaris-ui-deposit-blockers/blob/master/.github/workflows/steam-workshop-release.yml) | Publish releases to Steam Workshop | Runs on a `v*.*.*` tag push or a manual dispatch with a `tag` input, writes the version into both descriptors, builds and extracts the release archive containing `ui-deposit-blockers/` and `ui-deposit-blockers.mod`, and uploads it to Workshop item `2073660612` with the `hmlendea/steam-workshop-update` action |
+| [ GitHub Release ](https://github.com/hmlendea/stellaris-ui-deposit-blockers/blob/master/.github/workflows/github-release.yml) | Publish the release archive to GitHub Releases | Runs when a GitHub release is published, or on a manual dispatch with a `tag` input, writes the version into both descriptors, builds `ui-deposit-blockers_<version>.zip` containing `ui-deposit-blockers/` and `ui-deposit-blockers.mod`, and uploads it with the `softprops/action-gh-release` action |
 
 ## 🗂️ Project Structure
 

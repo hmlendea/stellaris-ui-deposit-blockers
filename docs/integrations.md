@@ -88,7 +88,7 @@ flowchart LR
     GitHub --> Player
 ```
 
-Each channel holds its own copy. The GitHub Releases, Nexus Mods, and Steam Workshop publications are automated on a tag push or release event, and each workflow builds its own archive from the tagged content; Paradox Mods is updated by hand, so a change must still be published there too to avoid drift. Because the newest release tag predates the most recent repository commits, players using a channel that hosts the tagged archive receive older content than the repository contains.
+Each channel holds its own copy. The GitHub Releases, Nexus Mods, and Steam Workshop publications are automated on a tag push, release event, or manual dispatch, and each workflow writes the version into both descriptors and builds its own archive from the tagged content; Paradox Mods is updated by hand, so a change must still be published there too to avoid drift. Because the newest release tag predates the most recent repository commits, players using a channel that hosts the tagged archive receive older content than the repository contains.
 
 ## Where to go next
 
