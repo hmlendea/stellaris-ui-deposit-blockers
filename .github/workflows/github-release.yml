@@ -3,6 +3,11 @@ name: GitHub Release
 on:
   release:
     types: [ published ]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release'
+        required: true
 
 permissions:
   contents: write
@@ -12,16 +17,35 @@ jobs:
     name: Build and publish
     runs-on: ubuntu-latest
 
+    env:
+      VERSION: ${{ inputs.tag || github.event.release.tag_name }}
+
     steps:
     - name: Check out the repository
       uses: actions/checkout@v7
+      with:
+        ref: ${{ env.VERSION }}
 
     - name: Extract the version from the GitHub tag
       id: version
       run: |
-        VERSION="${{ github.event.release.tag_name }}"
         VERSION="${VERSION#v}"
         echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+    - name: Update the mod version
+      shell: bash
+      run: |
+        MOD_VERSION="${{ steps.version.outputs.version }}"
+
+        for DESCRIPTOR in "ui-deposit-blockers.mod" "ui-deposit-blockers/descriptor.mod"
+        do
+          if grep -q '^version=' "${DESCRIPTOR}"; then
+            sed -i "s/^version=.*/version=\"${MOD_VERSION}\"/" "${DESCRIPTOR}"
+          else
+            printf 'version="%s"\n' "${MOD_VERSION}" | cat - "${DESCRIPTOR}" > "${DESCRIPTOR}.tmp"
+            mv "${DESCRIPTOR}.tmp" "${DESCRIPTOR}"
+          fi
+        done
 
     - name: Build the release archive
       id: package
@@ -29,13 +53,14 @@ jobs:
       run: |
         ARCHIVE_NAME="ui-deposit-blockers_${{ steps.version.outputs.version }}.zip"
 
-        zip -r "${ARCHIVE_NAME}" "ui-deposit-blockers" "ui-deposit-blockers.mod"
+        zip -r "${ARCHIVE_NAME}" "ui-deposit-blockers/" "ui-deposit-blockers.mod"
 
         echo "archive_name=${ARCHIVE_NAME}" >> "$GITHUB_OUTPUT"
 
     - name: Publish the release asset
       uses: softprops/action-gh-release@v2
       with:
+        tag_name: ${{ env.VERSION }}
         files: ${{ steps.package.outputs.archive_name }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

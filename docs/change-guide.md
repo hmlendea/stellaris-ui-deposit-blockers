@@ -61,8 +61,8 @@ There is no build or packaging tooling in the repository itself; all three publi
 
 1. Update both descriptors' `supported_version` if targeting a new game-version family.
 2. Run the cross-checks against the tagged contents, not just the working tree.
-3. Tag the release and publish a GitHub release; `.github/workflows/github-release.yml` builds `ui-deposit-blockers_<version>.zip` (`GITHUB_TOKEN` is provided automatically) and attaches it to the release.
-4. The tag push also triggers `.github/workflows/nexus-mods-release.yml`, which builds the archive and uploads it to Nexus Mods (`NEXUSMODS_API_KEY` secret required), and `.github/workflows/steam-workshop-release.yml`, which builds and extracts the archive and uploads it to Steam Workshop item `2073660612` (`STEAM_USERNAME`, `STEAM_PASSWORD`, and `STEAM_2FA_SEED` secrets required). The Nexus Mods workflow can also be dispatched manually with an existing `tag`.
+3. Tag the release and publish a GitHub release; `.github/workflows/github-release.yml` updates the descriptor versions, builds `ui-deposit-blockers_<version>.zip` (`GITHUB_TOKEN` is provided automatically), and attaches it to the release.
+4. The tag push also triggers `.github/workflows/nexus-mods-release.yml`, which updates the descriptor versions, builds the archive, and uploads it to Nexus Mods (`NEXUSMODS_API_KEY` secret required), and `.github/workflows/steam-workshop-release.yml`, which updates the descriptor versions, builds and extracts the archive, and uploads it to Steam Workshop item `2073660612` (`STEAM_USERNAME`, `STEAM_PASSWORD`, and `STEAM_2FA_SEED` secrets required). Both the Nexus Mods and Steam Workshop workflows can also be dispatched manually with an existing `tag`, as can the GitHub Release workflow.
 5. Upload the same content set manually to Paradox Mods so that no channel drifts.
 
 ## Where to go next

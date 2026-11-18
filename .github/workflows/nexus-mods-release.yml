@@ -23,12 +23,26 @@ jobs:
       with:
         ref: ${{ env.VERSION }}
 
+    - name: Update the mod version
+      run: |
+        MOD_VERSION="${VERSION#v}"
+
+        for DESCRIPTOR in "ui-deposit-blockers.mod" "ui-deposit-blockers/descriptor.mod"
+        do
+          if grep -q '^version=' "${DESCRIPTOR}"; then
+            sed -i "s/^version=.*/version=\"${MOD_VERSION}\"/" "${DESCRIPTOR}"
+          else
+            printf 'version="%s"\n' "${MOD_VERSION}" | cat - "${DESCRIPTOR}" > "${DESCRIPTOR}.tmp"
+            mv "${DESCRIPTOR}.tmp" "${DESCRIPTOR}"
+          fi
+        done
+
     - name: Build the release archive
       run: |
-        zip -r "release.zip" "ui-deposit-blockers" "ui-deposit-blockers.mod"
+        zip -r "release.zip" "ui-deposit-blockers/" "ui-deposit-blockers.mod"
 
     - name: Upload
-      uses: Nexus-Mods/upload-action@v1.0.0-beta.10
+      uses: Nexus-Mods/upload-action@v1.0.0-beta.11
       with:
         api_key: ${{ secrets.NEXUSMODS_API_KEY }}
         file_id: 955873

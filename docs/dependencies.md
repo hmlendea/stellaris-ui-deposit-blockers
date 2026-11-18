@@ -92,7 +92,7 @@ These variables are not declared in the repository. They resolve from the base g
 | Paradox Mods | Distribution | Listing `34638` linked in `README.md` | Same |
 | Nexus Mods | Distribution | Listing `91`, file `955873`, published by `.github/workflows/nexus-mods-release.yml` | A stale published version ships outdated definitions; an upload failure leaves the channel behind |
 | GitHub Releases | Distribution and source of truth | Releases `v1.0`, `v1.0.1`; the archive built by `.github/workflows/github-release.yml` and attached to each release | Repository content may be ahead of the last release |
-| GitHub Actions | Publication automation | `.github/workflows/github-release.yml`, `softprops/action-gh-release@v2`, automatic `GITHUB_TOKEN`; `.github/workflows/nexus-mods-release.yml`, `Nexus-Mods/upload-action@v1.0.0-beta.10`, `NEXUSMODS_API_KEY` secret; `.github/workflows/steam-workshop-release.yml`, `hmlendea/steam-workshop-update@v1.0.0`, Steam secrets | Action tag changes or a missing secret block publication |
+| GitHub Actions | Publication automation | `.github/workflows/github-release.yml`, `softprops/action-gh-release@v2`, automatic `GITHUB_TOKEN`; `.github/workflows/nexus-mods-release.yml`, `Nexus-Mods/upload-action@v1.0.0-beta.11`, `NEXUSMODS_API_KEY` secret; `.github/workflows/steam-workshop-release.yml`, `hmlendea/steam-workshop-update@latest`, Steam secrets | Action tag changes or a missing secret block publication |
 | GitHub (repository hosting) | Documentation, issues, advisories | Remote `git@github.com:hmlendea/stellaris-ui-deposit-blockers.git` | — |
 
 ## Internal dependencies

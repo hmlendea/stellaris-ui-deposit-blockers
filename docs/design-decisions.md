@@ -128,7 +128,7 @@ Each decision below is recorded only where repository evidence supports it. Engi
 
 **Decision:** The repository defines only publication workflows, which package and publish to GitHub Releases, Nexus Mods, and Steam Workshop rather than validating content.
 
-**Evidence:** `.github/workflows/` contains `github-release.yml`, `nexus-mods-release.yml`, and `steam-workshop-release.yml`; each job builds the release archive from the tagged content and uploads it with `softprops/action-gh-release@v2`, `Nexus-Mods/upload-action@v1.0.0-beta.10`, and `hmlendea/steam-workshop-update@v1.0.0` respectively.
+**Evidence:** `.github/workflows/` contains `github-release.yml`, `nexus-mods-release.yml`, and `steam-workshop-release.yml`; each job updates the descriptor versions, builds the release archive from the tagged content, and uploads it with `softprops/action-gh-release@v2`, `Nexus-Mods/upload-action@v1.0.0-beta.11`, and `hmlendea/steam-workshop-update@latest` respectively.
 
 **Rationale:** No automated check is possible without a Stellaris installation, and the repository has no lint or build step, so a validation workflow cannot be expressed. Publication, by contrast, is a mechanical upload that does not require the engine.
 
